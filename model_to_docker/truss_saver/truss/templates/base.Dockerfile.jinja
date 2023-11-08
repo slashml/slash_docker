@@ -1,0 +1,67 @@
+ARG PYVERSION={{config.python_version}}
+FROM --platform=linux/x86_64 {{base_image_name_and_tag}}
+
+ENV PYTHON_EXECUTABLE {{ config.base_image.python_executable_path or 'python3' }}
+
+{% block fail_fast %}
+RUN grep -w 'ID=debian\|ID_LIKE=debian' /etc/os-release || { echo "ERROR: Supplied base image is not a debian image"; exit 1; }
+RUN $PYTHON_EXECUTABLE -c "import sys; sys.exit(0) if sys.version_info.major == 3 and sys.version_info.minor >=8 and sys.version_info.minor <=11 else sys.exit(1)" \
+    || { echo "ERROR: Supplied base image does not have 3.8 <= python <= 3.11"; exit 1; }
+{% endblock %}
+
+RUN pip install --upgrade pip --no-cache-dir \
+    && rm -rf /root/.cache/pip
+
+{% block base_image_patch %}
+{% endblock %}
+
+{% if config.model_framework.value == 'huggingface_transformer' %}
+    {% if config.resources.use_gpu %}
+# HuggingFace pytorch gpu support needs mkl
+RUN pip install mkl
+    {% endif %}
+{% endif%}
+
+{% block post_base %}
+{% endblock %}
+
+{% block install_system_requirements %}
+    {%- if should_install_system_requirements %}
+COPY ./system_packages.txt system_packages.txt
+RUN apt-get update && apt-get install --yes --no-install-recommends $(cat system_packages.txt) \
+    && apt-get autoremove -y \
+    && apt-get clean -y \
+    && rm -rf /var/lib/apt/lists/*
+    {%- endif %}
+{% endblock %}
+
+
+{% block install_requirements %}
+    {%- if should_install_requirements %}
+COPY ./requirements.txt requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir && rm -rf /root/.cache/pip
+    {%- endif %}
+{% endblock %}
+
+
+ENV APP_HOME /app
+WORKDIR $APP_HOME
+
+
+{% block app_copy %}
+{% endblock %}
+
+{% block bundled_packages_copy %}
+    {%- if bundled_packages_dir_exists %}
+COPY ./{{config.bundled_packages_dir}} /packages
+    {%- endif %}
+{% endblock %}
+
+
+{% for env_var_name, env_var_value in config.environment_variables.items() %}
+ENV {{ env_var_name }} {{ env_var_value }}
+{% endfor %}
+
+
+{% block run %}
+{% endblock %}

@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/faizank/workspace/experiments/model_deployment_experiments/slashdocker/mlruns/0/3a98a956c3114efcbceb6cce54407227/artifacts
+end_time: 1699404188700
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3a98a956c3114efcbceb6cce54407227
+run_name: masked-gnu-148
+run_uuid: 3a98a956c3114efcbceb6cce54407227
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699404186342
+status: 3
+tags: []
+user_id: faizank

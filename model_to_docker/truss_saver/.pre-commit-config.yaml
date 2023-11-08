@@ -1,0 +1,50 @@
+fail_fast: true
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-added-large-files
+        args: ["--maxkb=500"]
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: fix-byte-order-marker
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-symlinks
+      - id: debug-statements
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort-local
+        entry: poetry run isort
+        language: system
+        types: [python]
+        pass_filenames: true
+      - id: flake8
+        name: flake8-local
+        entry: poetry run flake8
+        language: system
+        types: [python]
+        pass_filenames: true
+      - id: mypy
+        name: mypy-local
+        entry: poetry run mypy
+        args: ["--install-types", "--non-interactive"]
+        language: python
+        types: [python]
+        exclude: ^examples/|^truss/test.+/|model.py$
+        pass_filenames: true
+  - repo: https://github.com/tcort/markdown-link-check
+    rev: "v3.10.3"
+    hooks:
+      - id: markdown-link-check
+  - repo: https://github.com/psf/black
+    rev: 22.10.0
+    hooks:
+      - id: black
+        # It is recommended to specify the latest version of Python
+        # supported by your project here, or alternatively use
+        # pre-commit's default_language_version, see
+        # https://pre-commit.com/#top_level-default_language_version
+        language_version: python3.9

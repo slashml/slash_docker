@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/faizank/workspace/experiments/model_deployment_experiments/slashdocker/mlruns/0/ae2db1d887d84e73a40da9ad90a4c516/artifacts
+end_time: 1699403589533
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ae2db1d887d84e73a40da9ad90a4c516
+run_name: salty-steed-823
+run_uuid: ae2db1d887d84e73a40da9ad90a4c516
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1699403587361
+status: 3
+tags: []
+user_id: faizank
