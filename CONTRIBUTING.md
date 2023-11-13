@@ -1,12 +1,12 @@
 ## Contributing
 
-Truss was first created at [Baseten](https://baseten.co), but as an open and living project eagerly accepts contributions of all kinds from the broader developer community. Please note that all participation with Truss falls under our [code of conduct](CODE_OF_CONDUCT.md).
+Slash_Docker is created at [slashml](https://slashml.co), but as an open and living project eagerly accepts contributions of all kinds from the broader developer community. Please note that all participation with slash_docker falls under our [code of conduct](CODE_OF_CONDUCT.md).
 
-We use GitHub features for project management on Truss:
+
+You can perform one of the following tasks:
 
 * For bugs and feature requests, file an issue.
 * For changes and updates, create a pull request.
-* To view and comment on the roadmap, check the projects tab.
 
 ## Local development
 
@@ -14,32 +14,14 @@ To get started contributing to the library, all you have to do is clone this rep
 
 ### Setup
 
-**PLEASE NOTE:** the ML ecosystem in general is still not well supported on M1 Macs, and as such, we do not recommend or support local development on M1 for Truss. Truss is well-optimized for use with GitHub Codespaces and other container-based development environments.
+Git clone this repo `git clone git@github.com:slashml/slash_docker.git`. Then `cd` into `slash_docker`.
 
-We use `asdf` to manage Python binaries and `poetry` to manage Python dependencies.
 
-For development in a macOS environment, we use `brew` to manage system packages.
-
+Then install the dependencies with:
 ```
-# Install asdf (or use another method https://asdf-vm.com/)
-brew install asdf
-
-# Install `asdf` managed python and poetry
-asdf plugin add python
-asdf plugin add poetry
-
-# Install poetry dependencies
-poetry install
-
-# And finally precommit
-poetry run pre-commit install
+pip install -r requirements.txt
 ```
 
-Then to run the entire test suite
-
-```
-poetry run pytest truss/tests
-```
 
 ### Release
 
