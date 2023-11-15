@@ -18,22 +18,44 @@ from sklearn.linear_model import LinearRegression
 lm = LinearRegression()
 lm.fit([[2], [3], [4]], [4,6,8])
 
+#test the model locally
+lm.predict([[1024]])
+
 ```
 
 ```python
+# serialize and save the model
 from model_to_docker import save_model
 save_model(lm, 'sklearn_linear_regression')
 
 ```
 
 ```python
+# start a docker container with the previously saved model
+# this will create a docker image, and start a docker container
 from model_to_docker import run_model_server
 
+# this will take a few seconds if its the first time
 container = run_model_server('sklearn_linear_regression', port=5000)
 
 ```
 
 ```python
+# perform inference on the locally running docker container
+import requests
+
+resp = requests.post('http://127.0.0.1:8080/v1/models/model:predict', '[[1024]]')
+
+print(resp.json())
+```
+
+```bash
+# you can also use the curl command in terminal to perform inference
+curl http://127.0.0.1:8080/v1/models/model:predict -d '[[1025]]'
+```
+
+```python
+# stop the docker container
 from model_to_docker import stop_model_server
 stop_model_server(container.id)
 ```
