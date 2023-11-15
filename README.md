@@ -4,11 +4,7 @@ A unified way to package pre-trained models into docker files
 
 # Model to Docker in action, or how it works
 
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/rc6ylq01D0c" 
-frameborder="0" 
-allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-allowfullscreen></iframe>
+https://youtu.be/rc6ylq01D0c
 
 # Installation guide
 
