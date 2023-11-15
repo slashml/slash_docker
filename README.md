@@ -62,3 +62,26 @@ stop_model_server(container.id)
 
 
 For other examples look inside the examples folder
+
+
+### Supported frameworks
+
+* Scikit-learn 
+* XGBoost
+* PyTorch
+* Mlflow
+* TensorFlow
+* MLFLow
+* FastAI
+* HuggingFace Transformers
+* Keras
+* LightGBM
+* ONNX
+* PyCaret
+* SegmentAnything
+
+### Contact
+If you run into any issues, or need a new feature, or any custom help, please feel free to reach out to us at faizank@slashml.com, support@slashml.com
+
+### Contributing
+We are actively looking for contributors. Please look at the [CONTRIBUTING.md](https://github.com/slashml/slash_docker/blob/main/CONTRIBUTING.md) guide for more details. We have a growing list of good_first_issues, you can reach us at support@slashml.com, to get started.

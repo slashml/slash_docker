@@ -21,36 +21,3 @@ Then install the dependencies with:
 ```
 pip install -r requirements.txt
 ```
-
-
-### Release
-
-When releasing a version of the library with user-facing changes, be sure to update the [changelog](docs/CHANGELOG.md) with an overview of the changes, along with updating any relevant documentation. Feel free to tag @philipkiely-baseten to write or review any changelog or docs updates.
-To release a new version of the library.
-
-1. Create a PR changing the `pyproject.toml` version
-2. Merge the PR, github actions will auto deploy if it detects the change
-
-#### Manual Release
-
-1. Create a tag on a commit `git tag -a -m "vX.X.X" vX.X.X
-2. Push the tag  `git push -u origin vX.X.X`
-
-## Documentation
-
-To learn about Truss see the [official documentation](https://truss.baseten.co).
-
-Contributions to documentation are very welcome! Simply edit the appropriate markdown files in the `docs/` folder and make a pull request. For larger changes, tutorials, or any questions please contact [philip.kiely@baseten.co](mailto:philip.kiely@baseten.co)
-
-## Contributors
-
-Truss was made possible by:
-
-[Baseten Labs, Inc](http://baseten.co)
-* Phil Howes
-* Alex Gillmor
-* Pankaj Gupta
-* Philip Kiely
-* Nish Singaraju
-* Abu Qadar
-* and users like you!
